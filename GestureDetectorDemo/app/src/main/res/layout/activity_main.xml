@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <!--标题栏-->
+    <LinearLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="100dp"
+        android:background="#C7C7C7"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!--wifi-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WIFI:320kb/s" />
+
+        </LinearLayout>
+
+        <!--方向-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="方向：前" />
+
+        </LinearLayout>
+
+        <!--设置-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_mian_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--方向盘-->
+    <hjs.zhi.com.gesturedetectordemo.weight.RockerView
+        android:id="@+id/btn_main_rocker"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        app:rockerCallBackMode="CALL_BACK_MODE_MOVE"
+        app:rockerScale="0.3" />
+
+    <!--加速-->
+    <hjs.zhi.com.gesturedetectordemo.weight.widght.PopupCircleView
+        android:id="@+id/pcv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="60dp"
+        app:pc_anim_duration="250"
+        app:pc_radius="100dp">
+
+        <hjs.zhi.com.gesturedetectordemo.weight.widght.PopupButton
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:pb_color="#ffffff"
+            app:pb_color_checked="#FFEBEBEB" />
+
+        <hjs.zhi.com.gesturedetectordemo.weight.widght.PopupButton
+            android:id="@+id/pb_like"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:pb_background="@drawable/good"
+            app:pb_background_checked="@drawable/good_re"
+            app:pb_checkable="true"
+            app:pb_color="#ffffff"
+            app:pb_color_checked="#ff0000"
+            app:pb_text_off="取消赞"
+            app:pb_text_on="点赞" />
+
+        <hjs.zhi.com.gesturedetectordemo.weight.widght.PopupButton
+            android:id="@+id/pb_share"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:pb_background="@drawable/share"
+            app:pb_background_checked="@drawable/share_re"
+            app:pb_checkable="true"
+            app:pb_color="#ffffff"
+            app:pb_color_checked="#ff0000"
+            app:pb_text_off="分享"
+            app:pb_text_on="分享" />
+
+        <hjs.zhi.com.gesturedetectordemo.weight.widght.PopupButton
+            android:id="@+id/pb_favorite"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            app:pb_background="@drawable/favorite"
+            app:pb_background_checked="@drawable/favorite_re"
+            app:pb_checkable="true"
+            app:pb_color="#ffffff"
+            app:pb_color_checked="#ff0000"
+            app:pb_text_off="取消收藏"
+            app:pb_text_on="收藏" />
+
+        <ImageView
+            android:id="@+id/iv_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+    </hjs.zhi.com.gesturedetectordemo.weight.widght.PopupCircleView>
+
+
+</RelativeLayout>
