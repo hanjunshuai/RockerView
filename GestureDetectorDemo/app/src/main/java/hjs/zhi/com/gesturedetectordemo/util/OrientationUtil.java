@@ -28,7 +28,8 @@ public class OrientationUtil {
     public OrientationUtil() {
     }
 
-    public void onCreat() {
+    public void onCreat(Context context) {
+        this.context = context;
         sm = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         aSensor = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         mSensor = sm.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
@@ -64,7 +65,7 @@ public class OrientationUtil {
 
         if (values[0] >= -80 && values[0] < -40 && Math.abs(values[0]) >= 20) {
             Log.i(TAG, "正北");
-//            toast(TAG + "前");
+            $toast(TAG + "前");
         } else if (values[0] >= 5 && values[0] < 85) {
             Log.i(TAG, "东北");
         } else if (values[0] >= 85 && values[0] <= 95) {
@@ -75,12 +76,12 @@ public class OrientationUtil {
             Log.i(TAG, "正南");
         } else if (values[0] >= -175 && values[0] < -95) {
             Log.i(TAG, "西南");
-            Log.i(TAG, "hjs左");
+            $toast(TAG + "hjs左");
         } else if (values[0] >= -95 && values[0] < -85) {
             Log.i(TAG, "正西");
         } else if (values[0] >= -85 && values[0] < -5) {
             Log.i(TAG, "西北");
-            Log.i(TAG, "hjs右");
+            $toast(TAG + "hjs右");
 
         }
     }
@@ -108,7 +109,7 @@ public class OrientationUtil {
     // Toast
     Context context;
 
-    protected void toast(CharSequence msg) {
+    protected void $toast(CharSequence msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 }

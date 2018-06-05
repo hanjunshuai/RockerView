@@ -13,6 +13,8 @@ import android.widget.Toast;
 import hjs.zhi.com.gesturedetectordemo.NetworkConnectChangedReceiver;
 import hjs.zhi.com.gesturedetectordemo.R;
 import hjs.zhi.com.gesturedetectordemo.util.OrientationUtil;
+import hjs.zhi.com.gesturedetectordemo.util.TtsUtil;
+import hjs.zhi.com.gesturedetectordemo.util.VibratorUtil;
 import hjs.zhi.com.gesturedetectordemo.weight.RockerView;
 import hjs.zhi.com.gesturedetectordemo.weight.widght.PopupButton;
 import hjs.zhi.com.gesturedetectordemo.weight.widght.PopupCircleView;
@@ -34,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
 
         mRockerView = findViewById(R.id.btn_main_rocker);
@@ -56,10 +56,15 @@ public class MainActivity extends AppCompatActivity {
         gyro = getIntent().getStringExtra(SettingActivity.DATA);
 
 
+        init();
+//        TtsUtil.getInstance().stratPlay("前方" + 10 + "米处有障碍物");
+
+        VibratorUtil.getInstance().startVibrator();
     }
 
-    private void sysout(boolean b) {
-        System.out.println("isChecked==" + b);
+    private void init() {
+//        TtsUtil.getInstance().init(this);
+        VibratorUtil.getInstance().init(this);
     }
 
     /**
@@ -194,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
         switch (resultCode) {
             case 0:
                 hideView();
-                OrientationUtil.getInstance().onCreat();
+                OrientationUtil.getInstance().onCreat(this);
                 Log.d("TAG DATA", ">>>>>>>" + requestCode + "  " + resultCode + "  " + gyro);
                 break;
             case 1:
@@ -208,10 +213,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 隐藏视图
+     */
     private void hideView() {
         mRockerView.setVisibility(View.GONE);
     }
 
+    /**
+     * 显示图片
+     */
     private void showView() {
         mRockerView.setVisibility(View.VISIBLE);
     }
@@ -225,5 +236,15 @@ public class MainActivity extends AppCompatActivity {
             unregisterReceiver(bReceiver);
         }
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        VibratorUtil.getInstance().stopVibrator();
+    }
+
+    private void sysout(boolean b) {
+        System.out.println("isChecked==" + b);
     }
 }
